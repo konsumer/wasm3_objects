@@ -16,6 +16,7 @@ proc export_dimensions(runtime: PRuntime; ctx: PImportContext; sp: ptr uint64; m
   var sp = sp.stackPtrToUint()
   proc procImpl(retPointer: uint32) =
     let v = WasmVector2(x: int32(5), y: int32(5))
+    cast[ptr WasmVector2](cast[uint64](mem) + retPointer)[] = v
 
   callHost(procImpl, sp, mem)
 
