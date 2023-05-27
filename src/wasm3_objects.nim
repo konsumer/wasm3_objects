@@ -26,13 +26,6 @@ let wasmBytes = readFile("./test.wasm")
 checkWasmRes m3_ParseModule(env, module.addr, cast[ptr uint8](unsafeAddr wasmBytes[0]), uint32 len(wasmBytes))
 checkWasmRes m3_LoadModule(runtime, module)
 
-var export_load: PFunction
-
-try:
-  checkWasmRes m3_FindFunction(export_load.addr, runtime, "load")
-except WasmError as e:
-  echo "export load: ", e.msg
-
 try:
   checkWasmRes m3_LinkRawFunction(module, "*", "trace", "v(*)", export_trace)
 except WasmError as e:
@@ -42,6 +35,13 @@ try:
   checkWasmRes m3_LinkRawFunction(module, "*", "dimensions", "(i)", export_dimensions)
 except WasmError as e:
   echo "import dimensions: ", e.msg
+
+var export_load: PFunction
+
+try:
+  checkWasmRes m3_FindFunction(export_load.addr, runtime, "load")
+except WasmError as e:
+  echo "export load: ", e.msg
 
 if export_load != nil:
   export_load.call(void)
