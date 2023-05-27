@@ -3,7 +3,7 @@
 import wasm3/exporter
 
 type
-  Vector2* {.byref,packed.} = object
+  Vector2* {.packed.} = object
     x*: int32
     y*: int32
 
