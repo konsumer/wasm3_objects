@@ -16,7 +16,7 @@ checkWasmRes m3_LinkRawFunction(module, "*", "dimensions", "*()", export_dimensi
 
 Since `type[0] (i32) -> nil` I also tried like this, andd usedd the arg as the "wasm address of return" which is what is in the currrent repo:
 
-```
+```nim
 checkWasmRes m3_LinkRawFunction(module, "*", "dimensions", "v(i)", export_dimensions)
 ```
 
