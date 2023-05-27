@@ -14,7 +14,7 @@ If I try to link the raw function like this, I get `import dimensions: function 
 checkWasmRes m3_LinkRawFunction(module, "*", "dimensions", "*()", export_dimensions)
 ```
 
-Since `type[0] (i32) -> nil` I also tried like this, andd usedd the arg as the "wasm address of return" which is what is in the currrent repo:
+Since `type[0] (i32) -> nil` I also tried like this, andd used the arg as the "wasm address of return" which is what is in the current repo:
 
 ```nim
 checkWasmRes m3_LinkRawFunction(module, "*", "dimensions", "v(i)", export_dimensions)
